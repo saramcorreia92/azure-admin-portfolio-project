@@ -1,0 +1,54 @@
+<svg viewBox="0 0 760 460" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <rect width="760" height="460" fill="#ffffff"/>
+  <text x="380" y="34" text-anchor="middle" font-size="20" font-weight="700" fill="#0b3d91">Secure Azure Landing Zone (Bicep)</text>
+
+  <!-- Resource Group boundary -->
+  <rect x="40" y="60" width="680" height="360" rx="10" fill="#f4f8ff" stroke="#0078d4" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="56" y="82" font-size="13" font-weight="600" fill="#0078d4">Resource Group: rg-bicep-landing-zone</text>
+
+  <!-- VNet boundary -->
+  <rect x="70" y="100" width="620" height="220" rx="8" fill="#eef6ec" stroke="#107c10" stroke-width="2"/>
+  <text x="86" y="122" font-size="13" font-weight="600" fill="#107c10">Virtual Network  10.0.0.0/16</text>
+
+  <!-- Subnet -->
+  <rect x="100" y="140" width="560" height="160" rx="6" fill="#ffffff" stroke="#5c2d91" stroke-width="1.5"/>
+  <text x="116" y="160" font-size="12" font-weight="600" fill="#5c2d91">app-subnet  10.0.1.0/24  (+ Storage service endpoint)</text>
+
+  <!-- NSG -->
+  <rect x="120" y="178" width="150" height="90" rx="6" fill="#fff4ce" stroke="#d29200" stroke-width="1.5"/>
+  <text x="195" y="200" text-anchor="middle" font-size="12" font-weight="700" fill="#8a6100">NSG</text>
+  <text x="195" y="220" text-anchor="middle" font-size="10" fill="#8a6100">Allow SSH (22)</text>
+  <text x="195" y="234" text-anchor="middle" font-size="10" fill="#8a6100">from your IP only</text>
+  <text x="195" y="252" text-anchor="middle" font-size="10" fill="#8a6100">Deny all else</text>
+
+  <!-- VM -->
+  <rect x="310" y="178" width="150" height="90" rx="6" fill="#deecf9" stroke="#0078d4" stroke-width="1.5"/>
+  <text x="385" y="200" text-anchor="middle" font-size="12" font-weight="700" fill="#004578">Linux VM</text>
+  <text x="385" y="220" text-anchor="middle" font-size="10" fill="#004578">Standard_B1s (free tier)</text>
+  <text x="385" y="234" text-anchor="middle" font-size="10" fill="#004578">Ubuntu 24.04 LTS</text>
+  <text x="385" y="252" text-anchor="middle" font-size="10" fill="#004578">SSH key auth only</text>
+
+  <!-- Storage -->
+  <rect x="500" y="178" width="140" height="90" rx="6" fill="#e1dfff" stroke="#5c2d91" stroke-width="1.5"/>
+  <text x="570" y="200" text-anchor="middle" font-size="12" font-weight="700" fill="#3b2270">Storage Acct</text>
+  <text x="570" y="220" text-anchor="middle" font-size="10" fill="#3b2270">Standard_LRS</text>
+  <text x="570" y="234" text-anchor="middle" font-size="10" fill="#3b2270">HTTPS only, TLS1.2</text>
+  <text x="570" y="252" text-anchor="middle" font-size="10" fill="#3b2270">No public access</text>
+
+  <!-- connector VM -> Storage -->
+  <line x1="460" y1="223" x2="500" y2="223" stroke="#5c2d91" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Public IP + user -->
+  <rect x="310" y="340" width="150" height="50" rx="6" fill="#ffffff" stroke="#0078d4" stroke-width="1.5"/>
+  <text x="385" y="362" text-anchor="middle" font-size="12" font-weight="600" fill="#004578">Public IP</text>
+  <text x="385" y="378" text-anchor="middle" font-size="10" fill="#004578">Dynamic</text>
+  <line x1="385" y1="340" x2="385" y2="268" stroke="#0078d4" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <text x="385" y="412" text-anchor="middle" font-size="11" fill="#444">SSH from your workstation  →  Public IP  →  NSG  →  VM</text>
+
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#333"/>
+    </marker>
+  </defs>
+</svg>

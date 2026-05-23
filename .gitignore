@@ -1,0 +1,31 @@
+# Real parameter file with your SSH key / values - NEVER commit this.
+bicep/main.parameters.json
+
+# Local Azure / environment files
+.env
+*.local
+
+# SSH keys (just in case)
+*.pem
+id_rsa
+id_rsa.pub
+
+# Bicep build artifacts
+*.json.tmp
+main.json
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+bicep/main-no-vmparameters.json
+bicep/*.json
+
+# Real param files (contain your IP) - never commit
+bicep/main-no-vm.parameters.json
+
+# Compiled Bicep output
+bicep/main.json
+bicep/main-no-vm.json
